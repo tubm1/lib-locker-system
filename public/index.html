@@ -24,16 +24,36 @@
         <section id="lockerSection" hidden>
             <h2>Choose your locker</h2>
             <div id="lockerGrid"></div>
-            <div id="lockerAction" hidden>
-                <h3 id="selectedLockerTitle"></h3>
-                <p>Bạn đã đóng cửa tủ chưa?</p>
-                <button id="storedDoneButton" type="button">
-                    COMPLETE
-                </button>
-                <button id="needRetrieveButton" type="button">
-                    RE-OPEN
-                </button>
-            </div>
+                    
+        <div id="lockerAction" hidden>
+            <h3 id="selectedLockerTitle"></h3>
+            <p>Bạn đã đóng cửa tủ chưa?</p>
+            <button id="storedDoneButton" type="button">
+                Đã gửi đồ xong
+            </button>
+            <button id="needRetrieveButton" type="button">
+                Tôi cần lấy đồ
+            </button>
+        </div>
+
+                
+        <div id="retrieveDialog" hidden>
+            <h3>Lấy đồ cá nhân</h3>
+            <p>Bạn có 30 giây để lấy đồ và đóng cửa tủ.</p>
+            <p>Thời gian còn lại:</p>
+            <h2 id="retrieveCountdown">30</h2>
+            <p id="retrieveMessage">Vui lòng lấy đồ của bạn.</p>
+        </div>
+
+        <div id="existingLockerAction" hidden>
+            <h3 id="existingLockerTitle"></h3>
+            <button id="addMoreItemsButton" type="button">
+                Gửi thêm đồ
+            </button>
+            <button id="returnLockerButton" type="button">
+                Trả tủ đồ
+            </button>
+        </div>
         </section>
         <script src="script.js"></script>
     </body>

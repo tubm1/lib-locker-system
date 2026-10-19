@@ -95,3 +95,99 @@ h1 {
     color: white;
     border-color: #C62828;
 }
+
+/* Keep hidden dialogs hidden */
+#lockerAction[hidden],
+#existingLockerAction[hidden] {
+    display: none !important;
+}
+
+/* Blur and darken the background behind an open dialog */
+body:has(#lockerAction:not([hidden]), #existingLockerAction:not([hidden]))::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 9998;
+}
+
+/* First and second pop-up dialogs */
+#lockerAction:not([hidden]),
+#existingLockerAction:not([hidden]) {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(420px, calc(100vw - 40px));
+    box-sizing: border-box;
+    padding: 28px;
+    background: white;
+    border: 2px solid skyblue;
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+    z-index: 9999;
+    text-align: center;
+}
+
+/* Space out the dialog buttons */
+#lockerAction:not([hidden]) button,
+#existingLockerAction:not([hidden]) button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: darkblue;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#lockerAction:not([hidden]) button:hover,
+#existingLockerAction:not([hidden]) button:hover {
+    background-color: #174a9c;
+}
+
+/* Bouncy pop-up animation */
+@keyframes popupBounce {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -65%) scale(0.5);
+    }
+
+    35% {
+        opacity: 1;
+        transform: translate(-50%, -42%) scale(1.12);
+    }
+
+    50% {
+        transform: translate(-50%, -54%) scale(0.94);
+    }
+
+    65% {
+        transform: translate(-50%, -47%) scale(1.05);
+    }
+
+    78% {
+        transform: translate(-50%, -52%) scale(0.98);
+    }
+
+    90% {
+        transform: translate(-50%, -49%) scale(1.01);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* Animate both dialogs when they appear */
+#lockerAction:not([hidden]),
+#existingLockerAction:not([hidden]) {
+    animation: popupBounce 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    transform-origin: center center;
+}

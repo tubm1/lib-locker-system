@@ -8,3 +8,4 @@ node_modules/
 
 # Demo account data
 Account_LoginData_Demo.txt
+database.db
